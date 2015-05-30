@@ -18,6 +18,7 @@
   "homepage": "https://github.com/lindakung/madlibs",
   "dependencies": {
     "body-parser": "^1.12.4",
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "node-sass": "^3.1.2"
   }
 }

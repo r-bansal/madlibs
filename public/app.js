@@ -1,6 +1,5 @@
 $(function() {
 
-	console.log('hello!')
 
 	$('#story').hide();
 	$('#play').hide();
@@ -35,7 +34,7 @@ $(function() {
 	$('#play').click(function(e) {
 		$('#story').hide();
 		$('#questions').show();
-		('#play').hide();
+		$('#play').hide();
 	})
 
 })
