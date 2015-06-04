@@ -1,40 +1,41 @@
-$(function() {
+var MadLibs = React.createClass({
+	getInitialState: function() {
+		return {
+			adj: ''
+		}
+	},
+	handleSubmit: function(e) {
+		e.preventDefault();
+		this.setState({
+			adj: e.target.value
+		})
 
-
-	$('#story').hide();
-	$('#play').hide();
-	//event handler
-	$('#btn-click').click(function(e) {
-		console.log('clicked?')
-		$('.greeting').empty().append($('input.greeting').val());
-		$('.adj').empty().append($('input.adjective').val());
-		$('.morning').empty().append($('input.morning').val());
-		$('.noun').empty().append($('input.noun').val());
-		$('.verb').empty().append($('input.verb').val());
-		$('.place').empty().append($('input.place').val());
-		$('.verb2').empty().append($('input.verb-two').val());
-		$('.noun2').empty().append($('input.noun-two').val());
-		$('.number').empty().append($('input.number').val());
-		$('.adj2').empty().append($('input.adj-two').val());
-		$('.verb3').empty().append($('input.verb-three').val());
-		$('.adj3').empty().append($('input.adj-three').val());
-		$('.verb4').empty().append($('input.verb-four').val());
-		$('.noun3').empty().append($('input.noun-three').val());
-
-		$('#story').show();
-
-		$('input').val('');
-
-		$('#questions').hide();
-
-		$('#play').show();
-
-	})
-
-	$('#play').click(function(e) {
-		$('#story').hide();
-		$('#questions').show();
-		$('#play').hide();
-	})
-
+	},
+	render: function() {
+		var adj = this.state.adj;
+		return (
+			<div className="madLibs">
+			<form className="storyForm" onSubmit={this.handleSubmit}>
+				<label>Adjective</label>
+				<input type="text" placeholder="Adjective" ref="adj" value={adj} />
+				<input type="Submit" value="Submit" />
+			</form>
+			<MadLibsStory adj={this.state.adj}/>
+			</div>
+		)
+	}
 })
+
+
+
+var MadLibsStory = React.createClass({
+	render: function() {
+		return(
+			<h3>Today I feel {this.props.children}</h3>
+			)
+	}
+})
+
+React.render(
+	<MadLibs />, document.getElementById('content')
+	)
