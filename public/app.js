@@ -4,12 +4,14 @@ var MadLibs = React.createClass({
 		return {
 			adj: '',
 			noun: '',
+			showMadLibsStory: false
 		}
 	},
 	handleSubmit: function(event) {
 		event.preventDefault();
 		this.setState({
-			adj: React.findDOMNode(this.refs.adj).value
+			adj: React.findDOMNode(this.refs.adj).value,
+			showMadLibsStory: true
 		})
 		console.log('hello', this.state.adj)
 	},
@@ -22,7 +24,7 @@ var MadLibs = React.createClass({
 				<label>Noun</label>
 				<input type="text" placeholder="Noun" ref="noun" valueLink={this.linkState('noun')} />
 				<input type="Submit" value="Submit" />
-				<MadLibsStory adj={this.state.adj} noun={this.state.noun} />
+				{ this.state.showMadLibsStory ? <MadLibsStory adj={this.state.adj} noun={this.state.noun} /> : null }
 			</form>
 			</div>
 		)
