@@ -1,37 +1,44 @@
 var MadLibs = React.createClass({
+	mixins: [React.addons.LinkedStateMixin],
 	getInitialState: function() {
 		return {
-			adj: ''
+			adj: '',
+			noun: '',
 		}
 	},
-	handleSubmit: function(e) {
-		e.preventDefault();
+	handleSubmit: function(event) {
+		event.preventDefault();
 		this.setState({
-			adj: e.target.value
+			adj: React.findDOMNode(this.refs.adj).value
 		})
-
+		console.log('hello', this.state.adj)
 	},
 	render: function() {
-		var adj = this.state.adj;
 		return (
 			<div className="madLibs">
 			<form className="storyForm" onSubmit={this.handleSubmit}>
 				<label>Adjective</label>
-				<input type="text" placeholder="Adjective" ref="adj" value={adj} />
+				<input type="text" placeholder="Adjective" ref="adj" valueLink={this.linkState('adj')} />
+				<label>Noun</label>
+				<input type="text" placeholder="Noun" ref="noun" valueLink={this.linkState('noun')} />
 				<input type="Submit" value="Submit" />
+				<MadLibsStory adj={this.state.adj} noun={this.state.noun} />
 			</form>
-			<MadLibsStory adj={this.state.adj}/>
 			</div>
 		)
 	}
 })
 
 
-
 var MadLibsStory = React.createClass({
+	getInitialState: function() {
+		return {
+			show: false
+		}
+	},
 	render: function() {
 		return(
-			<h3>Today I feel {this.props.children}</h3>
+			<h3>Today I feel {this.props.adj}. It was a {this.props.noun} day.</h3>
 			)
 	}
 })
