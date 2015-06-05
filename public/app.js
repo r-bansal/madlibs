@@ -51,7 +51,7 @@ var MadLibs = React.createClass({
 			return(
 				<div>
 				<MadLibsStory  adj={this.state.adj} nationality={this.state.nationality} person={this.state.person} noun={this.state.noun} adj2={this.state.adj2} noun2={this.state.noun2} adj3={this.state.adj3} adj4={this.state.adj4} noun3={this.state.noun3} noun4={this.state.noun4} num={this.state.num} shapes={this.state.shapes} food={this.state.food} food2={this.state.food2} num2={this.state.num2} />
-				<button type="submit" onClick={this.resetMadLibs}>Play Again!</button>
+				<button type="submit" className="btn" onClick={this.resetMadLibs}>Play Again!</button>
 				</div>
 			)
 		} else {
