@@ -102,7 +102,7 @@ var MadLibs = React.createClass({
 				<label>Number</label>
 				<input type="text" placeholder="Number" ref="num2" valueLink={this.linkState('num2')} />
 
-				<input type="Submit" value="Mad Libs!" />
+				<input className="btn" type="Submit" value="Mad Libs!" />
 			</form>)
 		}
 	},
